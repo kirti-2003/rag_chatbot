@@ -17,8 +17,8 @@ COLLECTION_NAME = "rag_documents"
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 # Chunking configuration
-CHUNK_SIZE = 800
-CHUNK_OVERLAP = 150
+CHUNK_SIZE = 250
+CHUNK_OVERLAP = 30
 
 # Upload restrictions
 MAX_FILE_SIZE_MB = 10
