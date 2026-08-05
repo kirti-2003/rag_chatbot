@@ -7,6 +7,8 @@ langchain-community
 langchain-text-splitters
 langchain-huggingface
 langchain-chroma
+langchain-openrouter
 
 pymupdf
 sentence-transformers
+python-dotenv

@@ -1,4 +1,10 @@
 from pathlib import Path
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 
 # Root directory of the project
@@ -26,6 +32,17 @@ ALLOWED_CONTENT_TYPES = {
     "application/pdf",
 }
 
+# OpenRouter configuration
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+OPENROUTER_MODEL = os.getenv(
+    "OPENROUTER_MODEL",
+    "openrouter/free",
+)
+
+LLM_TEMPERATURE = 0.0
+LLM_MAX_TOKENS = 500
+LLM_MAX_RETRIES = 2
 
 # Create directories automatically when the application starts
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
