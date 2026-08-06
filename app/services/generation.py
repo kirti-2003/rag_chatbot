@@ -2,6 +2,7 @@ from typing import Any
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
+from langsmith import traceable
 
 from app.services.llm import get_llm
 from app.services.retriever import retrieve_documents
@@ -42,6 +43,11 @@ Provide the answer based only on the context above.
 )
 
 
+@traceable(
+    name="Generate RAG Answer",
+    run_type="chain",
+    tags=["rag", "generation"],
+)
 def generate_answer(
     question: str,
     search_type: str = "similarity",
@@ -114,6 +120,11 @@ def generate_answer(
     }
 
 
+@traceable(
+    name="Build RAG Sources",
+    run_type="chain",
+    tags=["rag", "sources"],
+)
 def build_sources(
     retrieved_results: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:

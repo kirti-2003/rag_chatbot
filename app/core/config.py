@@ -47,3 +47,25 @@ LLM_MAX_RETRIES = 2
 # Create directories automatically when the application starts
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
+# -----------------------------
+# LangSmith configuration
+# -----------------------------
+
+LANGSMITH_TRACING = os.getenv(
+    "LANGSMITH_TRACING",
+    "false",
+).lower() == "true"
+
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
+
+LANGSMITH_PROJECT = os.getenv(
+    "LANGSMITH_PROJECT",
+    "rag-chatbot-development",
+)
+
+if LANGSMITH_TRACING and not LANGSMITH_API_KEY:
+    raise ValueError(
+        "LANGSMITH_TRACING is enabled, but "
+        "LANGSMITH_API_KEY is missing."
+    )

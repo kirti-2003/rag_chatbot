@@ -1,6 +1,7 @@
 from typing import Any
 
 from langchain_core.documents import Document
+from langsmith import traceable
 
 from app.services.vector_store import get_vector_store
 
@@ -234,6 +235,11 @@ def retrieve_by_mmr(
     return results
 
 
+@traceable(
+    name="Retrieve Relevant Documents",
+    run_type="retriever",
+    tags=["rag", "retrieval"],
+)
 def retrieve_documents(
     query: str,
     search_type: str = "similarity",

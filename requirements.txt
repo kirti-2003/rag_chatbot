@@ -12,3 +12,4 @@ langchain-openrouter
 pymupdf
 sentence-transformers
 python-dotenv
+langsmith
